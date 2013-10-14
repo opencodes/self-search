@@ -1,0 +1,7 @@
+CREATE TABLE `self_search`.`search` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`key` VARCHAR( 255 ) NOT NULL DEFAULT 'NA',
+`value` TEXT NOT NULL ,
+`updated_at` INT NOT NULL ,
+`user_id` INT NOT NULL
+) ENGINE = MYISAM ;
