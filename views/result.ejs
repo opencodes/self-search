@@ -1,0 +1,8 @@
+<dev id="result-container" >
+	<% for (var k = 0;k < items.length; k++) { %>
+	      	<div class="bs-callout bs-callout-info">
+	        <h4><%= items[k].key %> <span class="time"><%= items[k].updated_at %> </span></h4>
+	        <p><%= items[k].value %></p>
+	      </div>
+	<% } %>
+</dev>

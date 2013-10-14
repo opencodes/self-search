@@ -86,12 +86,12 @@
 									  </div><!-- /.col-lg-6 -->
 								</form>
 								<dev id="msg-container" >
-								<% for (var k=0;k<0;k++) { %>
-              <div class="bs-callout bs-callout-info">
-						          <h4>Title <span class="time">2013-05-24 07:58:40 </span></h4>
-						          <p>This class will only change the appearance of <code>&lt;a class="btn btn-default"&gt;</code> buttons, not their functionality. Use custom JavaScript to disable links here.</p>
+								<% for (var k = 0;k < items.length; k++) { %>
+              					<div class="bs-callout bs-callout-info">
+						          <h4><%= items[k].key %> <span class="time"><%= items[k].updated_at %> </span></h4>
+						          <p><%= items[k].value %></p>
 						        </div>
-        <% } %>
+        						<% } %>
 								</dev>			    
       </div>
     </div>

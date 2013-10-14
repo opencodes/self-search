@@ -14,7 +14,7 @@ var Search = {
       util.log('Query : '+sql);
       Db.query(
           sql,
-          function selectCb(err, results) {
+          function selectCb(err, result) {
             if (!err) {
               return callback(null,result);
             }
