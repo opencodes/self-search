@@ -21,9 +21,11 @@ var app = (function (app, $) {
 				e.preventDefault();
 				query = $('#query-input').val();
 				_this = $(this);
-				if($('#query-input').val().indexOf('::') == -1 && $('#query-input').val().split('::').length==2){
-					return false;
+				if($('#query-input').val().indexOf('::') == -1 || $('#query-input').val().split('::').length==2){
+					console.log('Show-Result');
+					app.selfsearch.showresult(_this);
 				}else{
+					console.log('Show-Post');
 					app.selfsearch.post(_this);	
 				}
 			});
@@ -61,6 +63,23 @@ var app = (function (app, $) {
 					}
 				});
 			
+		},
+		showresult : function(_this){
+			$.get('/search/',_this.serialize(),function(res){
+				console.log(res);
+				if(res.status==true){
+					var html = "";
+					for(var k in res.data){
+						html+= '<div class="bs-callout bs-callout-info">';
+						html+= '<h4>'+res.key+'<span class="time">2013-05-24 07:58:40 </span></h4>';
+						html+= '<p>'+res.value+'</p>';
+						html+= '</div>';
+					}
+					$('#result-container').html(html);
+				}else if(res.status==false){
+					$('#alert-msg').html('<div class="alert alert-danger">'+res.msg+'</div>');
+				}
+			});
 		},
 		autocomplete : function(keys){
 			    $( "#query-input" ).autocomplete({

@@ -81,6 +81,23 @@ var selfsearch = {
 		});
 	},
 	/**
+	 * get all data by user
+	 * @param req
+	 * @param res
+	 * @param next
+	 */
+	getSearchByKey : function(req,res,next){
+		searchdb.getSearchByKeys({id:1,query:req.query.query},function(err,res){
+			if(!err && res){
+				req.data = {status:true,items:res};
+				next();
+			}else{
+				req.data = {status:false,items:null};
+				next();
+			}
+		});
+	},
+	/**
 	 * Send Json Response
 	 * @param req
 	 * @param res
